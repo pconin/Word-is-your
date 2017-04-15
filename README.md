@@ -2,9 +2,9 @@
 Simple game, nodejs webapp, translate words to french
 
 # Installation
-On clone le repo
-`git clone https://github.com/pconin/Word-is-yours.git && cd Word-is-yours`
-On installe les modules
+On clone le repo  
+`git clone https://github.com/pconin/Word-is-yours.git && cd Word-is-yours`  
+On installe les modules  
 `npm install`
 Un serveur mysql doit tourner sur le port sur 3306, soit via MAMP / LAMP ou bien via un container bitnami:  https://bitnami.com/stack/mamp
 On lance le serveur
