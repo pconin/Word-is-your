@@ -1,14 +1,28 @@
 var exports = module.exports;
 let connection = require('./config/db');
+var translate = require('node-google-translate-skidz'); // module gratuit de traduction
+
 // fonction qui traduit le mot
 
 translateWord = function(word, callback){
-  word.word_en = 'traduction anglaise';
+  translate({
+    text: word.word_fr,
+    source: 'fr',
+    target: 'en'
+  }, function(result) {
+    word.word_en = result.translation;
+    //on verifie que la traduction a marché
+    if (word.word_en.toLowerCase() === word.word_fr.toLowerCase()){
+      console.log(word.word_en + ' === ' + word.word_fr + ' so wrong traduction');
+      // si la traduction n'est pas trouvée, on rappelle la fonction precedente.
+      return getWordsFromDb(word.difficulty, callback);
+    }
+    else {
+      return callback(word);
+    }
+  });
 
-  callback(word);
 
-  // si la traduction n'est pas trouvée, on rappelle la fonction precedente.
-  //getWordsFromDb(word.difficulty, callback)
 }
 
 // fonction qui renvoit un couple de mot aleatoire issu de la DB

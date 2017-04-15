@@ -4,7 +4,6 @@ let fs = require('fs');
 var exports = module.exports;
 
 useDB = function (callback) {
-  console.log('This is database installer');
   connection.query('DROP DATABASE IF EXISTS wiy;'+
       ' CREATE DATABASE wiy;'+
       ' CREATE TABLE `wiy`.`words` ( `word_id` INT(10) NOT NULL AUTO_INCREMENT , `word_fr` VARCHAR(40) NOT NULL , `difficulty` INT(3) NOT NULL, PRIMARY KEY (`word_id`)) ENGINE = InnoDB;'+
@@ -14,7 +13,7 @@ useDB = function (callback) {
           return console.log('Erreur initialization database: ' + err);
         }
         else {
-          console.log('DB drop create and use OK');
+          console.log('Database created');
           return callback();
         }
   });
