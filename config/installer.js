@@ -5,10 +5,10 @@ var exports = module.exports;
 
 useDB = function (callback) {
   console.log('This is database installer');
-  connection.query('DROP DATABASE IF EXISTS traduktor;'+
-      ' CREATE DATABASE traduktor;'+
-      ' CREATE TABLE `traduktor`.`words` ( `word_id` INT(10) NOT NULL AUTO_INCREMENT , `word` VARCHAR(40) NOT NULL , `difficulty` INT(3) NOT NULL, PRIMARY KEY (`word_id`)) ENGINE = InnoDB;'+
-      ' USE traduktor;',
+  connection.query('DROP DATABASE IF EXISTS wiy;'+
+      ' CREATE DATABASE wiy;'+
+      ' CREATE TABLE `wiy`.`words` ( `word_id` INT(10) NOT NULL AUTO_INCREMENT , `word` VARCHAR(40) NOT NULL , `difficulty` INT(3) NOT NULL, PRIMARY KEY (`word_id`)) ENGINE = InnoDB;'+
+      ' USE wiy;',
       function(err) {
         if (err){
           return console.log('Erreur initialization database: ' + err);
@@ -38,7 +38,7 @@ fillDB = function () {
               var difficulty = Math.floor(Math.random() * (2 - 0) + 0);
 
               // on insere dans la db
-              connection.query('INSERT INTO `traduktor`.`words` (word, difficulty) VALUES (?,?)',[word, difficulty], function(err) {
+              connection.query('INSERT INTO `wiy`.`words` (word, difficulty) VALUES (?,?)',[word, difficulty], function(err) {
                 if (err){
                   console.log('Erreur ajout de \''+word+'\' dans la database: ' + err);
                 }

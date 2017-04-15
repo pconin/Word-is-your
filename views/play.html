@@ -3,17 +3,21 @@
     <meta charset="utf-8">
     <title>Play - Word is yours!</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <script src="/javascripts/play.js"></script>
   </head>
+
   <body>
     <h1> This is the game </h1>
   </body>
+
+  </footer>
+    <hr/>
+    <a href='/'>
+      <img id='logo' alt='Logo WIY' src='/images/logo-wiy.png'></img>
+    </a>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+          crossorigin="anonymous"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script>
-    var socket = io.connect('http://localhost:3000');
-    socket.on('news', function (data) {
-      console.log(data);
-      socket.emit('my other event', { my: 'data' });
-    });
-  </script>
+  <script src="/javascripts/play.js"></script>
 </html>

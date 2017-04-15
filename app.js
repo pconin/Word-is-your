@@ -1,5 +1,7 @@
 var express = require('express');
-var socket_io    = require("socket.io");
+var app = express();
+var server = require('http').Server(app);
+
 
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,12 +9,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
 var index = require('./routes/index');
 var play = require('./routes/play');
-
+var socket = require('./socketHandler');
 var installer = require('./config/installer.js');
 
-var app = express();
+// configuration socket + serveur
+var socket_io    = require("socket.io");
+var io = require('socket.io')(server);
 
 // on utilise ejs pour render du html (pas tres propre)
 app.set('views', path.join(__dirname, 'views'));
@@ -28,13 +33,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-console.log('Hello');
 
 // au lancement du serveur, la base de donnée est initialisée de manière asynchrone.
 installer.installDB();
 
+// on fait des routes pour les 2 pages
 app.use('/', index);
 app.use('/play', play);
+
+// on appelle le module de gestion des sockets
+socket.handler(io);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -53,5 +62,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
+
 
 module.exports = {app: app, server: server};
