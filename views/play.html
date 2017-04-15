@@ -5,6 +5,15 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <script src="/javascripts/play.js"></script>
   </head>
-
+  <body>
     <h1> This is the game </h1>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io.connect('http://localhost:3000');
+    socket.on('news', function (data) {
+      console.log(data);
+      socket.emit('my other event', { my: 'data' });
+    });
+  </script>
 </html>
