@@ -82,7 +82,7 @@ var finishAnimation = function(score){
   // on choisit le texte et la couleur en fonction du résultat final
   if (score === 20){
     color = 'green';
-    finalText = 'Well done! Vous avez gagné? Allé, on la remet?';
+    finalText = 'Well done! Vous avez gagné! On la remet?';
   }
   else{
     color = 'red';
