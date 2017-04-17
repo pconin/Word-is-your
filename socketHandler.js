@@ -13,7 +13,7 @@ translateWord = function(word, callback){
     word.word_en = result.translation;
     //on verifie que la traduction a marché
     if (word.word_en.toLowerCase() === word.word_fr.toLowerCase()){
-      console.log(word.word_en + ' === ' + word.word_fr + ' so wrong traduction');
+      console.log('Pas de traduction trouvée pour ' + word.word_fr);
       // si la traduction n'est pas trouvée, on rappelle la fonction precedente.
       return getWordsFromDb(word.difficulty, callback);
     }
@@ -48,10 +48,9 @@ getWordsFromDb = function (diff, callback) {
 exports.handler = function(io){
   io.on('connection', function (socket) {
     socket.on('getWords', function (response) {
-      //console.log('Difficulty: ' + response.diff);
+      // quand on reçoit la socket, on récupère les mots dans la db
       getWordsFromDb(response.diff, function(word){
-          //console.log('callback: ' + JSON.stringify(word));
-          console.log('sendback')
+          // on les renvoit ensuite au client
           socket.emit('sendWords', { word: word });
       })
 

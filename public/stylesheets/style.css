@@ -6,9 +6,46 @@ body {
 }
 
 /*Jeu*/
-textarea {
-    resize: none;
+
+#score {
+  margin-top: -10px;
 }
+
+.popup{
+  margin: auto;
+  display: none;
+  margin-top: 10px;
+  padding:12px;
+  width: 20%;
+  border-radius:10px;
+}
+
+#success{
+  color: #4F8A10;
+  background-color: #DFF2BF;
+}
+
+#fail {
+  color: #D8000C;
+  background-color: #FFBABA;
+}
+
+
+.box{
+border-radius:10px; border: 1px black solid; overflow: hidden;
+  width: 40%;
+  min-width: 400px;
+  margin: auto;
+  background-color: #F5F5F5	;
+}
+
+
+#word_en{
+  letter-spacing: 4px;
+  font-size: calc(30px + 1.4vw);
+  margin-bottom: 10px;
+}
+
 /*Texte index*/
 .textIndex {
   line-height: 40px;
@@ -44,45 +81,49 @@ hr {
 }
 
 /*Bouton valider*/
-#submit {
-	-moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
-	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5));
-	background:-moz-linear-gradient(top, #79bbff 5%, #378de5 100%);
-	background:-webkit-linear-gradient(top, #79bbff 5%, #378de5 100%);
-	background:-o-linear-gradient(top, #79bbff 5%, #378de5 100%);
-	background:-ms-linear-gradient(top, #79bbff 5%, #378de5 100%);
-	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
-	background-color:#79bbff;
+
+.blue_button {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #33bdef), color-stop(1, #1b85ab));
+	background:-moz-linear-gradient(top, #33bdef 5%, #1b85ab 100%);
+	background:-webkit-linear-gradient(top, #33bdef 5%, #1b85ab 100%);
+	background:-o-linear-gradient(top, #33bdef 5%, #1b85ab 100%);
+	background:-ms-linear-gradient(top, #33bdef 5%, #1b85ab 100%);
+	background:linear-gradient(to bottom, #33bdef 5%, #1b85ab 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bdef', endColorstr='#1b85ab',GradientType=0);
+	background-color:#33bdef;
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
 	border-radius:6px;
-	border:1px solid #84bbf3;
-	display:inline-block;
+	border:1px solid #057fd0;
+	display:block;
+  width: 20%;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:21px;
+	font-size:15px;
 	font-weight:bold;
-	padding:9px 24px;
+	padding:6px 24px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #528ecc;
 }
-#submit:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff));
-	background:-moz-linear-gradient(top, #378de5 5%, #79bbff 100%);
-	background:-webkit-linear-gradient(top, #378de5 5%, #79bbff 100%);
-	background:-o-linear-gradient(top, #378de5 5%, #79bbff 100%);
-	background:-ms-linear-gradient(top, #378de5 5%, #79bbff 100%);
-	background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff',GradientType=0);
-	background-color:#378de5;
+.blue_button:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #1b85ab), color-stop(1, #33bdef));
+	background:-moz-linear-gradient(top, #1b85ab 5%, #33bdef 100%);
+	background:-webkit-linear-gradient(top, #1b85ab 5%, #33bdef 100%);
+	background:-o-linear-gradient(top, #1b85ab 5%, #33bdef 100%);
+	background:-ms-linear-gradient(top, #1b85ab 5%, #33bdef 100%);
+	background:linear-gradient(to bottom, #1b85ab 5%, #33bdef 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1b85ab', endColorstr='#33bdef',GradientType=0);
+	background-color:#1b85ab;
 }
-#submit:active {
+.blue_button:active {
 	position:relative;
 	top:1px;
 }
+
+
 
 
 /*Bouton jouer*/
@@ -123,4 +164,47 @@ hr {
 .play:active {
 	position:relative;
 	top:1px;
+}
+
+/*Popup fin du jeu*/
+#fade { /*--Masque opaque noir de fond--*/
+	display: none; /*--masqué par défaut--*/
+	background: #000;
+	position: fixed; left: 0; top: 0;
+	width: 100%; height: 100%;
+	opacity: .80;
+	z-index: 9999;
+}
+.popup_block{
+	display: none; /*--masqué par défaut--*/
+	background: #fff;
+	padding: 20px;
+	border: 20px solid #ddd;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 30%;
+  width: 75%;
+  opacity : 0.95;
+  position: fixed;
+  left: 50%;
+  margin-left: -37.5%;
+	/*--Les différentes définitions de Box Shadow en CSS3--*/
+	-webkit-box-shadow: 0px 0px 20px #000;
+	-moz-box-shadow: 0px 0px 20px #000;
+	box-shadow: 0px 0px 20px #000;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+
+}
+.btn_finish {
+	margin: auto;
+}
+/*--Gérer la position fixed pour IE6--*/
+*html #fade {
+position: absolute;
+}
+*html .popup_block {
+position: absolute;
 }

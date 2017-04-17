@@ -6,12 +6,20 @@
   </head>
 
   <body>
-    <h1> This is the game </h1>
-    <div id = 'word_fr'></div>
-    <div id = 'word_en'></div>
-    <textarea id = 'user_res' placeholder="Votre réponse"></textarea>
-    <div id = 'submit'>Valider</div>
-    <h3>Score><h3>
+
+    <h1> Traduisez le mot suivant </h1>
+    <div id="end" class="popup_block">
+    	<div id='finalText'></div>
+    </div>
+    <div class='box'>
+      <div id = 'word_fr'></div>
+      <div id = 'word_en'></div>
+      <input id='user_res' type="text">
+      <div id='submit' class='blue_button'>Valider</div>
+    </div>
+    <div class='popup' id='success'>Bonne réponse! +1</div>
+    <div class='popup' id='fail'>Faux! -1</div>
+    <h3>Score<h3>
     <div id = 'score'></div>
   </body>
 
