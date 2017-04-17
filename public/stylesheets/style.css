@@ -189,7 +189,7 @@ hr {
   position: fixed;
   left: 50%;
   margin-left: -37.5%;
-	/*--Les différentes définitions de Box Shadow en CSS3--*/
+
 	-webkit-box-shadow: 0px 0px 20px #000;
 	-moz-box-shadow: 0px 0px 20px #000;
 	box-shadow: 0px 0px 20px #000;
@@ -201,10 +201,19 @@ hr {
 .btn_finish {
 	margin: auto;
 }
-/*--Gérer la position fixed pour IE6--*/
+
 *html #fade {
 position: absolute;
 }
 *html .popup_block {
 position: absolute;
+}
+
+.error{
+  width: 100%;
+  height: 100%;
+  text-align:center;
+  background-color: #F5F5F5;
+  margin:auto;
+
 }

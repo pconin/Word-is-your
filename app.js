@@ -25,7 +25,7 @@ app.set('view engine', 'html');
 
 // favicon madjoh
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+app.use(logger('dev')); // on laisse en dev pour avec des logs clairs
 app.use(express.static(path.join(__dirname, 'public')));
 
 

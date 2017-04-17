@@ -35,7 +35,7 @@ var getWords = function(diff){
   socket.on('sendWords', function(response){
     if (wait === 1){
       wait = 0;
-      console.log('Bonne réponse: ' + JSON.stringify(response.word.word_en));
+      console.log('Bonne réponse: ' + JSON.stringify(response.word.word_en) + ' Difficulté: ' + response.word.difficulty);
       var word = response.word;
 
       // on vérifie que le mot n'a pas déjà été tiré
@@ -104,7 +104,6 @@ $('#user_res').keyup(function(e){
     if(e.keyCode == 13)
     {
         $('#submit').click();
-        $(this).val('');
     }
 });
 
@@ -112,8 +111,11 @@ $('#user_res').keyup(function(e){
 $('#submit').click(function(){
   if (score < 20 && score > 0){
 
+    // on enregistre la reponse et on reinit la textbox
     user_res = $('#user_res').val();
+    $('#user_res').val('');
 
+    // on check si c'est la bonne reponse
     if (user_res.toLowerCase() === word_en.toLowerCase()){
       //console.log('BONNE REPONSE');
       score++;
@@ -124,8 +126,12 @@ $('#submit').click(function(){
       score--;
       success = 0;
     }
+
+    // on affiche le resultat de la reponse
     popup(success);
     $('#score').html(score);
+
+    // on verifie si le jeu est terminé
     if (score <= 0 || score >= 20)
       return finishAnimation(score);
     else {
